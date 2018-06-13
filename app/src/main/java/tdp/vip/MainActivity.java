@@ -17,8 +17,10 @@ import android.support.v4.app.Fragment;
 import android.view.Window;
 import android.view.WindowManager;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, FragmentFutbol.OnFragmentInteractionListener, FragmentMusica.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener, FragmentFutbol.OnFragmentInteractionListener, FragmentMusica.OnFragmentInteractionListener, FragmentTV.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +52,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
     }
 
     @Override
@@ -87,19 +90,16 @@ public class MainActivity extends AppCompatActivity
         Fragment myFragment = null;
         boolean fragmentSelected = false;
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_gallery) {
             myFragment = new FragmentFutbol();
             fragmentSelected = true;
         } else if (id == R.id.nav_slideshow) {
             myFragment = new FragmentMusica();
             fragmentSelected = true;
         } else if (id == R.id.nav_manage) {
-
+            myFragment = new FragmentTV();
+            fragmentSelected = true;
         } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
 
         }
 
@@ -117,5 +117,23 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onFragmentInteraction(Uri uri) {
 
+    }
+
+    public void imgFutbolClick(View view) {
+        Fragment myFragment = new FragmentFutbol();
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_main,myFragment).commit();
+        getSupportActionBar().setTitle("Futbol");
+    }
+
+    public void imgMusicClick(View view) {
+        Fragment myFragment = new FragmentMusica();
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_main,myFragment).commit();
+        getSupportActionBar().setTitle("Musica");
+    }
+
+    public void imgTVClick(View view) {
+        Fragment myFragment = new FragmentTV();
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_main,myFragment).commit();
+        getSupportActionBar().setTitle("TV/Cine");
     }
 }
