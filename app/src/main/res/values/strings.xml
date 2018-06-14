@@ -12,7 +12,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dialog_message">Para poder publicar su producto debe contactarse con VIP enviando un mail a publicaciones@vip.com.ar</string>
     <string name="dialog_title">Publicaciones</string>
-    <string name="ok">Aceptar</string>
+    <string name="ok">Enviar mail</string>
 
     <!--Contact Form-->
     <string name="contact_form">Contactenos</string>

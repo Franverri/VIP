@@ -77,6 +77,20 @@
                 android:singleLine="true"
                 android:textSize="14sp" />
 
+            <ImageView
+                android:id="@+id/imgUpload"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/buttonLoadPicture"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="Cargar imagen"
+                android:layout_gravity="center" />
+
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="32dp"
@@ -88,6 +102,7 @@
 
             <EditText
                 android:id="@+id/your_message"
+                android:hint="Brinde información detallada del producto que desea publicar"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
