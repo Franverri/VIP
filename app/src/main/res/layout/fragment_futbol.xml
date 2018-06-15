@@ -20,6 +20,7 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:src="@drawable/messi"
+            android:onClick="goActivityItems"
             app:civ_border_color="@color/black"
             app:civ_border_width="2.5dp" />
 
@@ -39,6 +40,7 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:src="@drawable/messi"
+            android:onClick="goActivityItems"
             app:civ_border_color="@color/black"
             app:civ_border_width="2.5dp" />
 
@@ -58,6 +60,7 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:src="@drawable/messi"
+            android:onClick="goActivityItems"
             app:civ_border_color="@color/black"
             app:civ_border_width="2.5dp" />
 
@@ -85,6 +88,7 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:src="@drawable/ronaldo"
+            android:onClick="goActivityItems"
             app:civ_border_color="@color/black"
             app:civ_border_width="2.5dp" />
 
@@ -104,6 +108,7 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:src="@drawable/ronaldo"
+            android:onClick="goActivityItems"
             app:civ_border_color="@color/black"
             app:civ_border_width="2.5dp" />
 
@@ -123,6 +128,7 @@
             android:layout_width="130dp"
             android:layout_height="130dp"
             android:src="@drawable/ronaldo"
+            android:onClick="goActivityItems"
             app:civ_border_color="@color/black"
             app:civ_border_width="2.5dp" />
 
