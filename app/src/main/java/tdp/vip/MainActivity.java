@@ -159,4 +159,9 @@ public class MainActivity extends AppCompatActivity
         getSupportFragmentManager().beginTransaction().replace(R.id.content_main,myFragment).commit();
         getSupportActionBar().setTitle("TV/Cine");
     }
+
+    public void goActivityItems(View view){
+        Intent intent = new Intent(MainActivity.this, ItemsActivity.class);
+        startActivity(intent);
+    }
 }
