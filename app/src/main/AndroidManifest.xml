@@ -19,14 +19,18 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name=".contact_form" />
         <activity
             android:name=".TestActivity"
+            android:exported="true"
             android:label="@string/title_activity_test"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".VerPublicacionActivity"
             android:exported="true"></activity>
     </application>
 

@@ -4,6 +4,8 @@ import android.graphics.Bitmap;
 
 import java.util.Vector;
 
+import tdp.vip.Util;
+
 public class DBLocal {
 
     private static final DBLocal ourInstance = new DBLocal();
@@ -44,6 +46,20 @@ public class DBLocal {
     }
 
     /**
+     * Dada una id, busca una publicacion en la base de datos
+     * @param id            El id de usuario
+     * @return              La publicacion si la encuentra, null sino
+     */
+    public Publicacion getPublicacion(int id) {
+        for ( Publicacion publicacion : publicaciones) {
+            if (publicacion.id == id) {
+                return publicacion;
+            }
+        }
+        return null;
+    }
+
+    /**
      * Dada una id, devuelve la prioridad de busqueda para las publicaciones del usuario
      * @param id            El id de usuario
      * @return              La prioridad si encuentra al usuario, 0 sino
@@ -59,13 +75,14 @@ public class DBLocal {
      */
     private void initDemo() {
         initFamosos();
+        initPublicaciones();
     }
 
     private void initFamosos() {
-        Famoso messi = new Famoso( "messi", "Lionel Messi", "La pulga");
-        Famoso ronaldo = new Famoso( "ronaldo", "Ronaldo Luís Nazário de Lima", "O Fenômeno");
-        Famoso justin = new Famoso( "justin", "Justin Bieber", null);
-        Famoso lali = new Famoso( "lali", "Mariana Esposito ", "Lali");
+        Famoso messi = new Famoso( Util.resStringToURI("drawable","messi"), "Lionel Messi", "La pulga");
+        Famoso ronaldo = new Famoso( Util.resStringToURI("drawable","ronaldo"), "Ronaldo Luís Nazário de Lima", "O Fenômeno");
+        Famoso justin = new Famoso( Util.resStringToURI("drawable","justin"), "Justin Bieber", null);
+        Famoso lali = new Famoso( Util.resStringToURI("drawable","lali"), "Mariana Esposito ", "Lali");
 
         famosos.add(messi);
         famosos.add(ronaldo);
@@ -76,5 +93,35 @@ public class DBLocal {
         famososFutbol.add(ronaldo);
         famososMusica.add(lali);
         famososMusica.add(justin);
+    }
+
+    private void initPublicaciones() {
+        Publicacion remera = new Publicacion("Remera de la selección autografiada por Messi",
+                "Oferta imperdible, remera de la selección Argentina firmada por Lionel Messi",
+                Util.resStringToURI("drawable","remeramessi"), 5, 501532);
+        Publicacion cd = new Publicacion("Cd My World autografiado por Justin Bieber",
+                "Album del músico Justin Bieber \" My World \" autografiado por el mismo",
+                Util.resStringToURI("drawable","cdjustin"), 5, 180001);
+
+        Publicacion remera1 = new Publicacion("Remera de la selección autografiada por Messi",
+                "Remera de la selección Argentina firmada por Lionel Messi",
+                Util.resStringToURI("drawable","remeramessi"), 5, 501532);
+        Publicacion remera2 = new Publicacion("Remera de la selección autografiada por Messi",
+                "Remera de la selección Argentina firmada por Lionel Messi",
+                Util.resStringToURI("drawable","remeramessi"), 5, 501532);
+        Publicacion remera3 = new Publicacion("Remera de la selección autografiada por Messi",
+                "Remera de la selección Argentina firmada por Lionel Messi",
+                Util.resStringToURI("drawable","remeramessi"), 5, 501532);
+        Publicacion remera4 = new Publicacion("Remera de la selección autografiada por Messi",
+                "Remera de la selección Argentina firmada por Lionel Messi",
+                Util.resStringToURI("drawable","remeramessi"), 5, 501532);
+
+        publicaciones.add(remera);
+        publicaciones.add(cd);
+
+        publicaciones.add(remera1);
+        publicaciones.add(remera2);
+        publicaciones.add(remera3);
+        publicaciones.add(remera4);
     }
 }
