@@ -7,10 +7,17 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ItemsActivity extends AppCompatActivity {
 
     private Button btnFollow;
+    private TextView tvNombreFamoso;
+    private String idFamoso;
+    private String nombreFamoso;
+    private CircleImageView imgFamoso;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +31,39 @@ public class ItemsActivity extends AppCompatActivity {
 
         //Obtengo la referencia al boton de "Seguir"
         btnFollow = (Button) findViewById(R.id.btnFollow);
+
+        //Obtengo la referencia a la imagen del famoso
+        imgFamoso = (CircleImageView) findViewById(R.id.imgFamosoItems);
+
+        //Obtengo los parametros pasados desde la activity anterior
+        Bundle bundle = getIntent().getExtras();
+        idFamoso = bundle.getString("idFamoso");
+
+        switch (idFamoso){
+            case "1":
+                nombreFamoso = "Leonel Messi";
+                imgFamoso.setImageDrawable(getResources().getDrawable(R.drawable.messi));
+                break;
+            case "2":
+                nombreFamoso = "Cristiano Ronaldo";
+                imgFamoso.setImageDrawable(getResources().getDrawable(R.drawable.ronaldo));
+                break;
+            case "3":
+                nombreFamoso = "Justin Bieber";
+                imgFamoso.setImageDrawable(getResources().getDrawable(R.drawable.justin));
+                break;
+            case "4":
+                nombreFamoso = "Lali Esposito";
+                imgFamoso.setImageDrawable(getResources().getDrawable(R.drawable.lali));
+                break;
+            default:
+                nombreFamoso = "Nombre default";
+        }
+
+        //Seteo los parametros en la vista
+        tvNombreFamoso = (TextView) findViewById(R.id.tvNombreFamoso);
+        tvNombreFamoso.setText(nombreFamoso);
+
     }
 
     public void followFamous(View view) {

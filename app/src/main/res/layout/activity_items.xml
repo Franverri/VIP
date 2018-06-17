@@ -16,17 +16,19 @@
             android:layout_height="260dp"
             android:orientation="vertical">
             <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgFamosoItems"
                 android:layout_marginTop="20dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
                 android:src="@drawable/lali"/>
             <TextView
+                android:id="@+id/tvNombreFamoso"
                 android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Lali Esposito"
+                android:text="Nombre Famoso"
                 android:textColor="@color/white"
                 android:textStyle="bold|italic"
                 android:textSize="21sp"/>
