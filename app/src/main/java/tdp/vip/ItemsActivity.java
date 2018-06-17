@@ -1,6 +1,8 @@
 package tdp.vip;
 
 import android.graphics.Color;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -10,12 +12,16 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import tdp.vip.dblocal.DBLocal;
+import tdp.vip.dblocal.EstadoPublicacion;
+import tdp.vip.dblocal.Famoso;
+import tdp.vip.dblocal.Publicacion;
 
 public class ItemsActivity extends AppCompatActivity {
 
     private Button btnFollow;
     private TextView tvNombreFamoso;
-    private String idFamoso;
+    private Famoso famoso;
     private String nombreFamoso;
     private CircleImageView imgFamoso;
 
@@ -37,33 +43,22 @@ public class ItemsActivity extends AppCompatActivity {
 
         //Obtengo los parametros pasados desde la activity anterior
         Bundle bundle = getIntent().getExtras();
-        idFamoso = bundle.getString("idFamoso");
+        int idFamoso = Integer.parseInt(bundle.getString("idFamoso"));
 
-        switch (idFamoso){
-            case "1":
-                nombreFamoso = "Leonel Messi";
-                imgFamoso.setImageDrawable(getResources().getDrawable(R.drawable.messi));
-                break;
-            case "2":
-                nombreFamoso = "Cristiano Ronaldo";
-                imgFamoso.setImageDrawable(getResources().getDrawable(R.drawable.ronaldo));
-                break;
-            case "3":
-                nombreFamoso = "Justin Bieber";
-                imgFamoso.setImageDrawable(getResources().getDrawable(R.drawable.justin));
-                break;
-            case "4":
-                nombreFamoso = "Lali Esposito";
-                imgFamoso.setImageDrawable(getResources().getDrawable(R.drawable.lali));
-                break;
-            default:
-                nombreFamoso = "Nombre default";
+        famoso = DBLocal.getInstance().getFamoso(idFamoso);
+        if (famoso != null) {
+            nombreFamoso = famoso.nombreYApellido;
+            imgFamoso.setImageURI(famoso.fotoURI);
+        }
+        else {
+            nombreFamoso = "Nombre default";
         }
 
         //Seteo los parametros en la vista
         tvNombreFamoso = (TextView) findViewById(R.id.tvNombreFamoso);
         tvNombreFamoso.setText(nombreFamoso);
 
+        agregarPublicaciones(idFamoso);
     }
 
     public void followFamous(View view) {
@@ -74,6 +69,22 @@ public class ItemsActivity extends AppCompatActivity {
             btnFollow.setText("Seguir");
             btnFollow.setBackgroundDrawable(getResources().getDrawable(R.drawable.roundedbutton));
         }
+    }
+
+    /**
+     * Agrega a la activity las publicaciones relacionadas al famoso
+     * @param idFamoso              Id del famoso
+     */
+    protected void agregarPublicaciones(int idFamoso) {
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        for (Publicacion publicacion: DBLocal.getInstance().getPublicacionesDeFamosoALaVenta(idFamoso) ) {
+            FragmentPublicacion fragment = FragmentPublicacion.newInstance(publicacion.id);
+            fragmentTransaction.add(R.id.items_cards, fragment);
+        }
+        fragmentTransaction.commit();
     }
 
 }

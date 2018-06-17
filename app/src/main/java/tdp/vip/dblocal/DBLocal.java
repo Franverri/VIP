@@ -46,6 +46,20 @@ public class DBLocal {
     }
 
     /**
+     * Dada una id, busca un famoso
+     * @param id            El id de usuario
+     * @return              El usuario si lo encuentra, null sino
+     */
+    public Famoso getFamoso(int id) {
+        for ( Famoso famoso : famosos) {
+            if (famoso.id == id) {
+                return famoso;
+            }
+        }
+        return null;
+    }
+
+    /**
      * Dada una id, busca una publicacion en la base de datos
      * @param id            El id de usuario
      * @return              La publicacion si la encuentra, null sino
@@ -57,6 +71,21 @@ public class DBLocal {
             }
         }
         return null;
+    }
+
+    /**
+     * Dado el id de un famoso, devuelve todas las publicaciones que haya de este
+     * @param idFamoso          El id del famoso
+     * @return                  Vector de publicaciones
+     */
+    public Vector<Publicacion> getPublicacionesDeFamosoALaVenta(int idFamoso) {
+        Vector<Publicacion> resultado = new Vector<Publicacion>();
+        for ( Publicacion publicacion : publicaciones) {
+            if (publicacion.idFamoso == idFamoso && publicacion.estado == EstadoPublicacion.A_LA_VENTA) {
+                resultado.add(publicacion);
+            }
+        }
+        return resultado;
     }
 
     /**
@@ -80,7 +109,7 @@ public class DBLocal {
 
     private void initFamosos() {
         Famoso messi = new Famoso( Util.resStringToURI("drawable","messi"), "Lionel Messi", "La pulga");
-        Famoso ronaldo = new Famoso( Util.resStringToURI("drawable","ronaldo"), "Ronaldo Luís Nazário de Lima", "O Fenômeno");
+        Famoso ronaldo = new Famoso( Util.resStringToURI("drawable","ronaldo"), "Cristiano Ronaldo", null);
         Famoso justin = new Famoso( Util.resStringToURI("drawable","justin"), "Justin Bieber", null);
         Famoso lali = new Famoso( Util.resStringToURI("drawable","lali"), "Mariana Esposito ", "Lali");
 
@@ -98,23 +127,20 @@ public class DBLocal {
     private void initPublicaciones() {
         Publicacion remera = new Publicacion("Remera de la selección autografiada por Messi",
                 "Oferta imperdible, remera de la selección Argentina firmada por Lionel Messi",
-                Util.resStringToURI("drawable","remeramessi"), 5, 501532);
+                Util.resStringToURI("drawable","remeramessi"), 5, 501532, 1);
         Publicacion cd = new Publicacion("Cd My World autografiado por Justin Bieber",
                 "Album del músico Justin Bieber \" My World \" autografiado por el mismo",
-                Util.resStringToURI("drawable","cdjustin"), 5, 180001);
+                Util.resStringToURI("drawable","cdjustin"), 5, 180001, 4);
 
-        Publicacion remera1 = new Publicacion("Remera de la selección autografiada por Messi",
+        Publicacion remera1 = new Publicacion("Remera Messi 2",
                 "Remera de la selección Argentina firmada por Lionel Messi",
-                Util.resStringToURI("drawable","remeramessi"), 5, 501532);
-        Publicacion remera2 = new Publicacion("Remera de la selección autografiada por Messi",
+                Util.resStringToURI("drawable","remeramessi"), 5, 4812346, 1);
+        Publicacion remera2 = new Publicacion("Remera Messi 3",
                 "Remera de la selección Argentina firmada por Lionel Messi",
-                Util.resStringToURI("drawable","remeramessi"), 5, 501532);
-        Publicacion remera3 = new Publicacion("Remera de la selección autografiada por Messi",
+                Util.resStringToURI("drawable","remeramessi"), 5, 5115230, 1);
+        Publicacion remera3 = new Publicacion("Remera Messi 4",
                 "Remera de la selección Argentina firmada por Lionel Messi",
-                Util.resStringToURI("drawable","remeramessi"), 5, 501532);
-        Publicacion remera4 = new Publicacion("Remera de la selección autografiada por Messi",
-                "Remera de la selección Argentina firmada por Lionel Messi",
-                Util.resStringToURI("drawable","remeramessi"), 5, 501532);
+                Util.resStringToURI("drawable","remeramessi"), 5, 4987532, 1);
 
         publicaciones.add(remera);
         publicaciones.add(cd);
@@ -122,6 +148,5 @@ public class DBLocal {
         publicaciones.add(remera1);
         publicaciones.add(remera2);
         publicaciones.add(remera3);
-        publicaciones.add(remera4);
     }
 }

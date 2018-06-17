@@ -41,6 +41,14 @@ public class Publicacion {
     }
 
     /**
+     * Igual que el anterior pero le asigna el famoso
+     */
+    public Publicacion (String titulo, String descripcion, Uri fotoURI, int idUsuarioPublicador, int precio, int idFamoso) {
+        this(titulo, descripcion, fotoURI, idUsuarioPublicador, precio);
+        this.idFamoso = idFamoso;
+    }
+
+    /**
      * Calcula la comision
      * TODO: Un calculo mejor
      */
