@@ -77,12 +77,6 @@
                 android:singleLine="true"
                 android:textSize="14sp" />
 
-            <ImageView
-                android:id="@+id/imgUpload"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
             <Button
                 android:id="@+id/buttonLoadPicture"
                 android:layout_width="wrap_content"
@@ -90,6 +84,15 @@
                 android:layout_weight="0"
                 android:text="Cargar imagen"
                 android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/fileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="3dp"
+                android:layout_gravity="center"
+                android:text="sin archivos..."
+                android:textSize="12sp" />
 
             <TextView
                 android:layout_width="fill_parent"
