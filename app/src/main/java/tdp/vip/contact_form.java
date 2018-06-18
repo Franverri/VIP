@@ -51,7 +51,7 @@ public class contact_form extends AppCompatActivity {
                 String subject   = your_subject.getText().toString();
                 String message   = your_message.getText().toString();
                 if (TextUtils.isEmpty(name)){
-                    your_name.setError("Enter Your Name");
+                    your_name.setError("Ingrese su nombre");
                     your_name.requestFocus();
                     return;
                 }
@@ -59,18 +59,18 @@ public class contact_form extends AppCompatActivity {
                 Boolean onError = false;
                 if (!isValidEmail(email)) {
                     onError = true;
-                    your_email.setError("Invalid Email");
+                    your_email.setError("Mail invalido");
                     return;
                 }
 
                 if (TextUtils.isEmpty(subject)){
-                    your_subject.setError("Enter Your Subject");
+                    your_subject.setError("Ingrese el asunto");
                     your_subject.requestFocus();
                     return;
                 }
 
                 if (TextUtils.isEmpty(message)){
-                    your_message.setError("Enter Your Message");
+                    your_message.setError("Ingrese su mensaje");
                     your_message.requestFocus();
                     return;
                 }
@@ -79,13 +79,12 @@ public class contact_form extends AppCompatActivity {
 
                 /* Fill it with Data */
                 sendEmail.setType("plain/text");
-                sendEmail.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"dr.m.karthiik@gmail.com"});
+                sendEmail.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"publicaciones@vip.com.ar"});
                 sendEmail.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
-                sendEmail.putExtra(android.content.Intent.EXTRA_TEXT,
-                        "name:"+name+'\n'+"Email ID:"+email+'\n'+"Message:"+'\n'+message);
+                sendEmail.putExtra(android.content.Intent.EXTRA_TEXT, message);
 
                 /* Send it off to the Activity-Chooser */
-                startActivity(Intent.createChooser(sendEmail, "Send mail..."));
+                startActivity(Intent.createChooser(sendEmail, "Enviar mail..."));
 
 
                 //Load picture button
