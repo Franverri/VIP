@@ -33,4 +33,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
     implementation files('libs/CircleImageView-master/gradle/wrapper/gradle-wrapper.jar')
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+    implementation 'com.craftman.cardform:cardform:0.0.2'
 }
