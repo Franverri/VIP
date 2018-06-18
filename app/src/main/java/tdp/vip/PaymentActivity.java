@@ -50,7 +50,7 @@ public class PaymentActivity extends AppCompatActivity {
 
         txtCardNumber.setHint("Numero de tarjeta");
 
-        txtCardExpiry.setHint("Fecha vencimiento");
+        txtCardExpiry.setHint("Vencimiento");
         txtCardExpiryP.setHint("Fecha vencimiento");
 
         btnPay.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +70,7 @@ public class PaymentActivity extends AppCompatActivity {
                         Toast.makeText(PaymentActivity.this, "Pago exitoso!",
                             Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(PaymentActivity.this, MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                     }
                 };
