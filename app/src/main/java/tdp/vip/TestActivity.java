@@ -33,36 +33,28 @@ public class TestActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        agregarPublicaciones();
+        agregarFamosos();
     }
 
     protected void agregarFamosos() {
-        for (Famoso famoso : DBLocal.getInstance().famosos) {
-            agregarFamoso(famoso);
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        boolean lado = true;
+
+        for (Famoso famoso: DBLocal.getInstance().famosos) {
+            FragmentFamoso fragment = FragmentFamoso.newInstance(famoso.id);
+            if (lado) {
+                fragmentTransaction.add(R.id.izq, fragment);
+            }
+            else {
+                fragmentTransaction.add(R.id.der, fragment);
+            }
+            lado = !lado;
         }
-    }
 
-    protected void agregarFamoso(Famoso famoso) {
-
-        ImageButton boton = new ImageButton(this);
-        boton.setImageURI(famoso.fotoURI);
-        boton.setMaxHeight(1);
-        boton.setMaxWidth(1);
-        boton.setScaleType(ImageView.ScaleType.CENTER_INSIDE);
-
-
-        LinearLayout ll = (LinearLayout)findViewById(R.id.layout);
-        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        ll.addView(boton, lp);
+        fragmentTransaction.commit();
     }
 
     protected void agregarPublicaciones() {
@@ -78,14 +70,6 @@ public class TestActivity extends AppCompatActivity {
         }
 
         fragmentTransaction.commit();
-    }
-
-    protected void agregarPublicacionesTest() {
-        for (Publicacion publicacion: DBLocal.getInstance().publicaciones) {
-            agregarPublicacion(publicacion);
-        }
-
-
     }
 
     protected void agregarPublicacion(Publicacion publicacion) {

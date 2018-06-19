@@ -108,45 +108,75 @@ public class DBLocal {
     }
 
     private void initFamosos() {
-        Famoso messi = new Famoso( Util.resStringToURI("drawable","messi"), "Lionel Messi", "La pulga");
-        Famoso ronaldo = new Famoso( Util.resStringToURI("drawable","ronaldo"), "Cristiano Ronaldo", null);
-        Famoso justin = new Famoso( Util.resStringToURI("drawable","justin"), "Justin Bieber", null);
-        Famoso lali = new Famoso( Util.resStringToURI("drawable","lali"), "Mariana Esposito ", "Lali");
+        Famoso messi = new Famoso( Util.resStringToURI("drawable","f_messi"), "Lionel Messi", "La pulga");
+        Famoso ronaldo = new Famoso( Util.resStringToURI("drawable","f_ronaldo"), "Cristiano Ronaldo", null);
+        Famoso maradona = new Famoso( Util.resStringToURI("drawable","f_maradona"), "Diego Maradona", null);
+        Famoso kun = new Famoso( Util.resStringToURI("drawable","f_kun"), "Kun Aguero", null);
+        Famoso bianchi = new Famoso( Util.resStringToURI("drawable","f_bianchi"), "Carlos Bianchi", null);
+        Famoso palermo = new Famoso( Util.resStringToURI("drawable","f_palermo"), "Martin Palermo", null);
 
-        famosos.add(messi);
-        famosos.add(ronaldo);
-        famosos.add(justin);
-        famosos.add(lali);
 
-        famososFutbol.add(messi);
-        famososFutbol.add(ronaldo);
-        famososMusica.add(lali);
-        famososMusica.add(justin);
+        Famoso justin = new Famoso( Util.resStringToURI("drawable","f_justin"), "Justin Bieber", null);
+        Famoso lali = new Famoso( Util.resStringToURI("drawable","f_lali"), "Lali Esposito ", "Lali");
+        Famoso cerati = new Famoso( Util.resStringToURI("drawable","f_cerati"), "Gustavo Cerati", null);
+        Famoso charlie = new Famoso( Util.resStringToURI("drawable","f_charlie"), "Charlie Garcia", null);
+        Famoso michael = new Famoso( Util.resStringToURI("drawable","f_michael"), "Michael Jackson", null);
+        Famoso elvis = new Famoso( Util.resStringToURI("drawable","f_elvis"), "Elvis Presley", null);
+
+        Famoso darin = new Famoso( Util.resStringToURI("drawable","f_darin"), "Ricardo Darin", null);
+        Famoso peretti = new Famoso( Util.resStringToURI("drawable","f_peretti"), "Diego Peretti", null);
+        Famoso francella = new Famoso( Util.resStringToURI("drawable","f_francella"), "Guillermo Francella", null);
+        Famoso echarri = new Famoso( Util.resStringToURI("drawable","f_echarri"), "Pablo Echarri", null);
+        Famoso arana = new Famoso( Util.resStringToURI("drawable","f_arana"), "Facundo Arana", null);
+        Famoso jeffbridges = new Famoso( Util.resStringToURI("drawable","f_jeff"), "Jeff Bridges", null);
+
+        addFamosoFutbol(messi);
+        addFamosoFutbol(maradona);
+        addFamosoFutbol(ronaldo);
+        addFamosoFutbol(bianchi);
+        addFamosoFutbol(kun);
+        addFamosoFutbol(palermo);
+
+        addFamosoMusica(justin);
+        addFamosoMusica(lali);
+        addFamosoMusica(cerati);
+        addFamosoMusica(charlie);
+        addFamosoMusica(michael);
+        addFamosoMusica(elvis);
+
+        addFamosoTVCine(darin);
+        addFamosoTVCine(peretti);
+        addFamosoTVCine(francella);
+        addFamosoTVCine(echarri);
+        addFamosoTVCine(arana);
+        addFamosoTVCine(jeffbridges);
+    }
+
+    private void addFamosoFutbol(Famoso famoso) {
+        famosos.add(famoso);
+        famososFutbol.add(famoso);
+    }
+
+    private void addFamosoMusica(Famoso famoso) {
+        famosos.add(famoso);
+        famososMusica.add(famoso);
+    }
+
+    private void addFamosoTVCine(Famoso famoso) {
+        famosos.add(famoso);
+        famososTV.add(famoso);
     }
 
     private void initPublicaciones() {
+        // Las ids de los famosos matchean con el orden que se llamo new Famoso
         Publicacion remera = new Publicacion("Remera de la selección autografiada por Messi",
                 "Oferta imperdible, remera de la selección Argentina firmada por Lionel Messi",
-                Util.resStringToURI("drawable","remeramessi"), 5, 501532, 1);
+                Util.resStringToURI("drawable","p_messi_remera"), 5, 501532, 1);
         Publicacion cd = new Publicacion("Cd My World autografiado por Justin Bieber",
                 "Album del músico Justin Bieber \" My World \" autografiado por el mismo",
-                Util.resStringToURI("drawable","cdjustin"), 5, 180001, 4);
-
-        Publicacion remera1 = new Publicacion("Remera Messi 2",
-                "Remera de la selección Argentina firmada por Lionel Messi",
-                Util.resStringToURI("drawable","remeramessi"), 5, 4812346, 1);
-        Publicacion remera2 = new Publicacion("Remera Messi 3",
-                "Remera de la selección Argentina firmada por Lionel Messi",
-                Util.resStringToURI("drawable","remeramessi"), 5, 5115230, 1);
-        Publicacion remera3 = new Publicacion("Remera Messi 4",
-                "Remera de la selección Argentina firmada por Lionel Messi",
-                Util.resStringToURI("drawable","remeramessi"), 5, 4987532, 1);
+                Util.resStringToURI("drawable","p_justin_cd"), 5, 180001, 7);
 
         publicaciones.add(remera);
         publicaciones.add(cd);
-
-        publicaciones.add(remera1);
-        publicaciones.add(remera2);
-        publicaciones.add(remera3);
     }
 }

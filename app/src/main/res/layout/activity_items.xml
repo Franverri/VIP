@@ -24,7 +24,7 @@
                 android:layout_height="130dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="20dp"
-                android:src="@drawable/lali" />
+                android:src="@android:drawable/ic_delete" />
 
             <TextView
                 android:id="@+id/tvNombreFamoso"

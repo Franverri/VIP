@@ -21,31 +21,34 @@
             android:id="@+id/imgFutbol"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/futbol_icon"
+            android:onClick="imgFutbolClick"
             android:paddingBottom="20dp"
+            android:src="@drawable/ic_futbol"
             app:civ_border_color="#FF000000"
             app:civ_border_width="2.5dp"
-            android:onClick="imgFutbolClick" />
+            app:civ_circle_background_color="@color/white" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgMusic"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/music_icon"
+            android:onClick="imgMusicClick"
             android:paddingBottom="20dp"
+            android:src="@drawable/ic_music"
             app:civ_border_color="#FF000000"
             app:civ_border_width="2.5dp"
-            android:onClick="imgMusicClick" />
+            app:civ_circle_background_color="@color/white" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgTV"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:src="@drawable/movie_icon"
-            app:civ_border_color="#FF000000"
+            android:onClick="imgTVClick"
             android:paddingBottom="20dp"
+            android:src="@drawable/ic_movie"
+            app:civ_border_color="#FF000000"
             app:civ_border_width="2.5dp"
-            android:onClick="imgTVClick" />
+            app:civ_circle_background_color="@color/white" />
 
     </LinearLayout>
 

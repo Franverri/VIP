@@ -43,7 +43,7 @@ public class ItemsActivity extends AppCompatActivity {
 
         //Obtengo los parametros pasados desde la activity anterior
         Bundle bundle = getIntent().getExtras();
-        int idFamoso = Integer.parseInt(bundle.getString("idFamoso"));
+        int idFamoso = bundle.getInt("idfamoso");
 
         famoso = DBLocal.getInstance().getFamoso(idFamoso);
         if (famoso != null) {

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<!-- <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/contrain"
@@ -36,4 +37,160 @@
         </TableLayout>
     </ScrollView>
 
-</android.support.constraint.ConstraintLayout>
+</android.support.constraint.ConstraintLayout> -->
+
+<LinearLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:paddingTop="15dp"
+android:paddingLeft="50dp"
+android:orientation="horizontal"
+android:background="@drawable/fondo">
+
+
+<LinearLayout
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:orientation="vertical" >
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@android:drawable/ic_delete"
+        android:tag="1"
+        android:onClick="goActivityItems"
+        app:civ_border_color="@color/black"
+        app:civ_border_width="2.5dp" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="30dp"
+        android:paddingRight="50dp"
+        android:textColor="@color/white"
+        android:textStyle="bold|italic"
+        android:textSize="20dp"
+        android:text="Leonel Messi"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@android:drawable/ic_delete"
+        android:tag="1"
+        android:onClick="goActivityItems"
+        app:civ_border_color="@color/black"
+        app:civ_border_width="2.5dp" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="30dp"
+        android:paddingRight="50dp"
+        android:textColor="@color/white"
+        android:textStyle="bold|italic"
+        android:textSize="20dp"
+        android:text="Leonel Messi"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@android:drawable/ic_delete"
+        android:tag="1"
+        android:onClick="goActivityItems"
+        app:civ_border_color="@color/black"
+        app:civ_border_width="2.5dp" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="30dp"
+        android:paddingRight="50dp"
+        android:textColor="@color/white"
+        android:textStyle="bold|italic"
+        android:textSize="20dp"
+        android:text="Leonel Messi"/>
+
+</LinearLayout>
+
+<LinearLayout
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:orientation="vertical" >
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@android:drawable/ic_delete"
+        android:tag="2"
+        android:onClick="goActivityItems"
+        app:civ_border_color="@color/black"
+        app:civ_border_width="2.5dp" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="30dp"
+        android:paddingRight="50dp"
+        android:textColor="@color/white"
+        android:textStyle="bold|italic"
+        android:textSize="20dp"
+        android:text="C. Ronaldo"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@android:drawable/ic_delete"
+        android:tag="2"
+        android:onClick="goActivityItems"
+        app:civ_border_color="@color/black"
+        app:civ_border_width="2.5dp" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="30dp"
+        android:paddingRight="50dp"
+        android:textColor="@color/white"
+        android:textStyle="bold|italic"
+        android:textSize="20dp"
+        android:text="C. Ronaldo"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="130dp"
+        android:layout_height="130dp"
+        android:src="@android:drawable/ic_delete"
+        android:tag="2"
+        android:onClick="goActivityItems"
+        app:civ_border_color="@color/black"
+        app:civ_border_width="2.5dp" />
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="30dp"
+        android:paddingRight="50dp"
+        android:textColor="@color/white"
+        android:textStyle="bold|italic"
+        android:textSize="20dp"
+        android:text="C. Ronaldo"/>
+
+</LinearLayout>
+
+</LinearLayout>

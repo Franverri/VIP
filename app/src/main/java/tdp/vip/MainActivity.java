@@ -24,7 +24,7 @@ import android.view.WindowManager;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, FragmentFutbol.OnFragmentInteractionListener, FragmentMusica.OnFragmentInteractionListener, FragmentTV.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,11 +138,6 @@ public class MainActivity extends AppCompatActivity
         dialog.show();
     }
 
-    @Override
-    public void onFragmentInteraction(Uri uri) {
-
-    }
-
     public void imgFutbolClick(View view) {
         Fragment myFragment = new FragmentFutbol();
         getSupportFragmentManager().beginTransaction().replace(R.id.content_main,myFragment).commit();
@@ -161,10 +156,4 @@ public class MainActivity extends AppCompatActivity
         getSupportActionBar().setTitle("TV/Cine");
     }
 
-    public void goActivityItems(View view){
-        String idFamoso = view.getTag().toString();
-        Intent intent = new Intent(MainActivity.this, ItemsActivity.class);
-        intent.putExtra("idFamoso", idFamoso);
-        startActivity(intent);
-    }
 }
