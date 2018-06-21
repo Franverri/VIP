@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 /**
  * Activity que muestra una publicacion
@@ -41,7 +42,13 @@ public class VerPublicacionActivity extends AppCompatActivity {
     }
 
     public void goPaymentActivity(View view) {
+        TextView tvPrecio = (TextView) findViewById(R.id.ver_public_precio);
+        String precio = tvPrecio.getText().toString();
+
         Intent intent = new Intent(this, PaymentActivity.class);
+        Bundle b = new Bundle();
+        b.putString("precio", precio);
+        intent.putExtras(b);
         startActivity(intent);
     }
 }

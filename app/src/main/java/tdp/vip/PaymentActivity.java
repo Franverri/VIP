@@ -27,6 +27,13 @@ public class PaymentActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_payment);
 
+        //Obtengo los parametros de la activity anterior
+        Bundle b = getIntent().getExtras();
+        String precio = ""; // or other values
+        if(b != null) {
+            precio = b.getString("precio");
+        }
+
         CardForm cardForm = (CardForm) findViewById(R.id.cardform);
         TextView txtAmountNumber = (TextView) findViewById(R.id.payment_amount);
         Button btnPay = (Button) findViewById(R.id.btn_pay);
@@ -42,7 +49,7 @@ public class PaymentActivity extends AppCompatActivity {
         TextView txtAmount = (TextView) findViewById(R.id.payment_amount_holder);
 
         txtAmount.setText("Monto del pago:");
-        txtAmountNumber.setText("$500.00");
+        txtAmountNumber.setText(precio);
         btnPay.setText("Pagar");
 
         txtCardName.setHint("Nombre");
