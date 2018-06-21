@@ -176,11 +176,16 @@ public class DBLocal {
                 "Album del músico Justin Bieber \" My World \" autografiado por el mismo",
                 Util.resStringToURI("drawable","p_justin_cd"), 5, 180001, 7);
 
-        Publicacion saludoPersonalizado = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
+        Publicacion saludoPersonalizadoBianchi = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
                 Util.resStringToURI("drawable", "p_video_personalizado"), 5, 500, 5);
+
+        Publicacion saludoPersonalizadoMessi = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
+                Util.resStringToURI("drawable", "p_video_personalizado"), 5, 500, 1);
+
 
         publicaciones.add(remera);
         publicaciones.add(cd);
-        publicaciones.add(saludoPersonalizado);
+        publicaciones.add(saludoPersonalizadoBianchi);
+        publicaciones.add(saludoPersonalizadoMessi);
     }
 }
