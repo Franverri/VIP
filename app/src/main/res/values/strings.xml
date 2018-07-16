@@ -24,4 +24,17 @@
     <string name="contact_form_post_message">Por favor espere estamos enviando el mensaje al equipo de soporte...</string>
     <string name="contact_posted">En mensaje ha sido enviado correctamente.</string>
     <string name="title_activity_test">TestActivity</string>
+    <string name="title_activity_login">Login</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Usuario</string>
+    <string name="prompt_password">Contraseña</string>
+    <string name="action_sign_in">Iniciar sesión</string>
+    <string name="action_sign_in_short">Registrarse</string>
+    <string name="error_invalid_email">Usuario inexistente</string>
+    <string name="error_invalid_password">Contraseña incorrecta</string>
+    <string name="error_incorrect_password">Contraseña incorrecta</string>
+    <string name="error_field_required">Campo necesario</string>
+    <string name="permission_rationale">"Permiso de contactos necesario para auto-llenado de mails"
+    </string>
 </resources>
