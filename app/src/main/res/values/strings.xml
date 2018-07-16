@@ -37,4 +37,7 @@
     <string name="error_field_required">Campo necesario</string>
     <string name="permission_rationale">"Permiso de contactos necesario para auto-llenado de mails"
     </string>
+    <string name="register">
+        <u>Registrarse</u>
+    </string>
 </resources>

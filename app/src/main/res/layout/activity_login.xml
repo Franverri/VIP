@@ -86,6 +86,15 @@
                 android:text="@string/action_sign_in"
                 android:textStyle="bold" />
 
+            <TextView
+                android:paddingTop="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textSize="16dp"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/register"/>
+
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
