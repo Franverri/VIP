@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/loginfondo"
-    tools:context=".RegisterActivity"
-    android:paddingBottom="15dp">
+    tools:context=".RegisterActivity">
 
     <ImageView
         android:layout_width="180dp"
@@ -111,7 +110,8 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
                 android:orientation="horizontal"
-                android:weightSum="100">
+                android:weightSum="100"
+                android:paddingBottom="20dp">
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="0dp"
