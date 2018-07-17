@@ -6,25 +6,19 @@
     <string name="nav_header_title">Agustin Luques</string>
     <string name="nav_header_subtitle">agus_luques</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="dialog_message">Para poder publicar su producto debe contactarse con VIP enviando un mail a publicaciones@vip.com.ar</string>
     <string name="dialog_title">Publicaciones</string>
     <string name="ok">Enviar mail</string>
 
     <!--Contact Form-->
-    <string name="contact_form">Contactenos</string>
     <string name="contact_form_name">Nombre</string>
     <string name="contact_form_email">Email</string>
     <string name="contact_form_subject">Asunto</string>
     <string name="contact_form_message">Mensaje</string>
     <string name="contact_form_button">Enviar mensaje</string>
-    <string name="contact_form_post_message">Por favor espere estamos enviando el mensaje al equipo de soporte...</string>
-    <string name="contact_posted">En mensaje ha sido enviado correctamente.</string>
     <string name="title_activity_test">TestActivity</string>
-    <string name="title_activity_login">Login</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Usuario</string>
@@ -40,4 +34,14 @@
     <string name="register">
         <u>Registrarse</u>
     </string>
+
+    <!-- Strings related to register -->
+    <string name="register_in_mail">Mail</string>
+    <string name="register_in_nombre">Nombre</string>
+    <string name="register_in_apellido">Apellido</string>
+    <string name="info_personal">Información personal</string>
+    <string name="register_in_usuario">Usuario</string>
+    <string name="register_in_contrasenia">Contraseña</string>
+    <string name="register_in_fechaNacimiento">Fecha de nacimiento</string>
+    <string name="register_btn">Registrarse</string>
 </resources>

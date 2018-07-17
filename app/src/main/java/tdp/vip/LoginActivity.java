@@ -210,7 +210,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 @Override
                 public void run() {
                     progressDialog.cancel();
-                    Toast.makeText(LoginActivity.this, "Inicio de sesión exitoso!",
+                    Toast.makeText(LoginActivity.this, "¡Inicio de sesión exitoso!",
                             Toast.LENGTH_LONG).show();
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -313,7 +313,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         mEmailView.setAdapter(adapter);
     }
 
-
     private interface ProfileQuery {
         String[] PROJECTION = {
                 ContactsContract.CommonDataKinds.Email.ADDRESS,
@@ -379,6 +378,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             mAuthTask = null;
             showProgress(false);
         }
+    }
+
+    public void goRegister(View view) {
+
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+
     }
 }
 
