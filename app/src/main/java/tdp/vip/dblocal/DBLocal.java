@@ -2,6 +2,8 @@ package tdp.vip.dblocal;
 
 import android.graphics.Bitmap;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.Vector;
 
 import tdp.vip.Util;
@@ -39,6 +41,36 @@ public class DBLocal {
     public Usuario getUsuario(int id) {
         for ( Usuario usuario : usuarios) {
             if (usuario.id == id) {
+                return usuario;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Verifica si un nombre de usuario ya existe
+     * @param nombreUsuario     El nombre de usuario
+     * @return                  True si existe, false sino
+     */
+    public Boolean nombreUsuarioExiste(String nombreUsuario) {
+        for ( Usuario usuario : usuarios) {
+            if (usuario.nombreUsuario == nombreUsuario) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Dado un usr y password devuelve el usuario correcto si este existe
+     * @param nombreUsuario     Nombre de usuario
+     * @param password          Password en texto plano
+     * @return                  El usuario si lo encuentra, null sino
+     */
+    public Usuario testLogin(String nombreUsuario, String password) {
+        byte[] passwordHash = Util.stringToHash(password);
+        for ( Usuario usuario : usuarios) {
+            if (usuario.nombreUsuario.equals(nombreUsuario) && java.util.Arrays.equals(usuario.passwordHash , passwordHash) ) {
                 return usuario;
             }
         }
@@ -103,6 +135,7 @@ public class DBLocal {
      * Carga los datos por defecto para hacer la demo de la aplicacion
      */
     private void initDemo() {
+        initUsuarios();
         initFamosos();
         initPublicaciones();
     }
@@ -187,5 +220,27 @@ public class DBLocal {
         publicaciones.add(cd);
         publicaciones.add(saludoPersonalizadoBianchi);
         publicaciones.add(saludoPersonalizadoMessi);
+    }
+
+    private void initUsuarios() {
+        Usuario usr1 = new Usuario("franco", "Franco", "Etcheverri", "franco@example.com", "1/1/1990", "1234");
+        Usuario usr2 = new Usuario("francisco", "Francisco", "Marin", "francisco@example.com", "1/1/1990", "1234");
+        Usuario usr3 = new Usuario("agustin", "Agustin", "Luques", "agustin@example.com", "1/1/1990", "1234");
+        Usuario usr4 = new Usuario("diego", "Diego", "Martins Forgan", "diego@example.com", "1/1/1990", "1234");
+        Usuario usr5 = new Usuario("guido", "Guido", "Negri", "guido@example.com", "1/1/1990", "1234");
+        Usuario usr6 = new Usuario("octavio", "Octavio", "Iogha", "octavio@example.com", "1/1/1990", "1234");
+        Usuario usr7 = new Usuario("usr7", "Juan", "Garcia", "usr7@example.com", "1/1/1990", "1234");
+        Usuario usr8 = new Usuario("usr8", "Martin", "Gomez", "usr8@example.com", "1/1/1990", "1234");
+        Usuario usr9 = new Usuario("usr9", "Luis", "Alonzo", "usr9@example.com", "1/1/1990", "1234");
+
+        usuarios.add(usr1);
+        usuarios.add(usr2);
+        usuarios.add(usr3);
+        usuarios.add(usr4);
+        usuarios.add(usr5);
+        usuarios.add(usr6);
+        usuarios.add(usr7);
+        usuarios.add(usr8);
+        usuarios.add(usr9);
     }
 }
