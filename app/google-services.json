@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "976756620824",
+    "firebase_url": "https://vipproject-ffaba.firebaseio.com",
+    "project_id": "vipproject-ffaba",
+    "storage_bucket": "vipproject-ffaba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:976756620824:android:eeeee63a413df14d",
+        "android_client_info": {
+          "package_name": "tdp.vip"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "976756620824-2sf9is4seuacerbcb3h5qn9lbep56ei5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKFlzKz1Y19yr8BK9Z3iLcz3JKLpk2Wcs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
