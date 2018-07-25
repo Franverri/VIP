@@ -54,7 +54,7 @@ public class DBLocal {
      */
     public Boolean nombreUsuarioExiste(String nombreUsuario) {
         for ( Usuario usuario : usuarios) {
-            if (usuario.nombreUsuario == nombreUsuario) {
+            if (usuario.nombreUsuario.equals(nombreUsuario)) {
                 return true;
             }
         }

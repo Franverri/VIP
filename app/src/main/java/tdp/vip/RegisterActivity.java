@@ -97,7 +97,7 @@ public class RegisterActivity extends AppCompatActivity {
         progressDialog.setMessage("Registrando nuevo usuario...");
         progressDialog.show();
 
-        if (DBLocal.getInstance().nombreUsuarioExiste(nombre)) {
+        if (DBLocal.getInstance().nombreUsuarioExiste(nombreUsuario)) {
             progressDialog.cancel();
             viewNombreUsuario.setError("Este nombre de usuario ya existe");
             viewNombreUsuario.requestFocus();
