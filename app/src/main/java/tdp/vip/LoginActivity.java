@@ -215,6 +215,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         Toast.makeText(LoginActivity.this, "¡Inicio de sesión exitoso!",
                                 Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        intent.putExtra("nombre",usuario.nombre);
+                        intent.putExtra("apellido",usuario.apellido);
+                        intent.putExtra("nombreUsuario",usuario.nombreUsuario);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                     }

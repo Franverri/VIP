@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.support.v4.app.Fragment;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -33,6 +34,13 @@ public class MainActivity extends AppCompatActivity
         //Le quito la barra de notificaciones
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        Bundle b = getIntent().getExtras();
+        String nombre = b.getString("nombre");
+        String apellido = b.getString("apellido");
+        String nombreUsr = b.getString("nombreUsuario");
+        Log.d("PRUEBA", nombre + " " + apellido + " " + nombreUsr);
+
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -55,6 +63,13 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+        View headerView = navigationView.getHeaderView(0);
+        TextView navName = (TextView) headerView.findViewById(R.id.nav_header_nombre);
+        navName.setText(nombre + " " + apellido);
+        TextView navUsername = (TextView) headerView.findViewById(R.id.nav_header_user);
+        navUsername.setText(nombreUsr);
+
         navigationView.setNavigationItemSelectedListener(this);
 
     }
