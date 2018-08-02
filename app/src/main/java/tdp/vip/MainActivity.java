@@ -1,7 +1,9 @@
 package tdp.vip;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -27,6 +29,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    public boolean estaEnPrincipal = true;
+
+    SharedPreferences sharedPref;
+    SharedPreferences.Editor editorShared;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,11 +42,13 @@ public class MainActivity extends AppCompatActivity
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        Bundle b = getIntent().getExtras();
-        String nombre = b.getString("nombre");
-        String apellido = b.getString("apellido");
-        String nombreUsr = b.getString("nombreUsuario");
-        Log.d("PRUEBA", nombre + " " + apellido + " " + nombreUsr);
+        sharedPref = getSharedPreferences(getString(R.string.saved_data), Context.MODE_PRIVATE);
+        editorShared = sharedPref.edit();
+
+        String nombre = sharedPref.getString("nombre", null);
+        String apellido = sharedPref.getString("apellido", null);
+        String nombreUsr = sharedPref.getString("nombreUsuario", null);
+
 
 
         setContentView(R.layout.activity_main);
@@ -80,7 +89,17 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            Log.d("PRUEBA", String.valueOf(estaEnPrincipal));
+            if(estaEnPrincipal){
+                super.onBackPressed();
+                finish();
+            } else {
+                estaEnPrincipal = true;
+                //setContentView(R.layout.activity_main);
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            }
         }
     }
 
@@ -120,9 +139,14 @@ public class MainActivity extends AppCompatActivity
             fragmentSelected = true;
         } else if (id == R.id.nav_share) {
             crearModal();
+        } else if (id == R.id.nav_close) {
+            editorShared.clear();
+            editorShared.apply();
+            goLogin();
         }
 
         if(fragmentSelected == true){
+            estaEnPrincipal = false;
             getSupportFragmentManager().beginTransaction().replace(R.id.content_main,myFragment).commit();
             item.setChecked(true);
             getSupportActionBar().setTitle(item.getTitle());
@@ -131,6 +155,12 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void goLogin() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 
     private void crearModal() {
@@ -154,18 +184,21 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void imgFutbolClick(View view) {
+        estaEnPrincipal = false;
         Fragment myFragment = new FragmentFutbol();
         getSupportFragmentManager().beginTransaction().replace(R.id.content_main,myFragment).commit();
         getSupportActionBar().setTitle("Futbol");
     }
 
     public void imgMusicClick(View view) {
+        estaEnPrincipal = false;
         Fragment myFragment = new FragmentMusica();
         getSupportFragmentManager().beginTransaction().replace(R.id.content_main,myFragment).commit();
         getSupportActionBar().setTitle("Musica");
     }
 
     public void imgTVClick(View view) {
+        estaEnPrincipal = false;
         Fragment myFragment = new FragmentTV();
         getSupportFragmentManager().beginTransaction().replace(R.id.content_main,myFragment).commit();
         getSupportActionBar().setTitle("TV/Cine");

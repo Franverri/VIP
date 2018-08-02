@@ -4,7 +4,9 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -72,9 +74,16 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private View mProgressView;
     private View mLoginFormView;
 
+    SharedPreferences sharedPref;
+    SharedPreferences.Editor editorShared;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Shared Pref
+        sharedPref = getSharedPreferences(getString(R.string.saved_data), Context.MODE_PRIVATE);
+        editorShared = sharedPref.edit();
 
         //Le quito la barra de notificaciones
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
@@ -82,6 +91,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        Boolean logueado = sharedPref.getBoolean("logueado", false);
+        if(logueado){
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        }
 
         setContentView(R.layout.activity_login);
         // Set up the login form.
@@ -211,13 +227,15 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     progressDialog.cancel();
                     Usuario usuario = DBLocal.getInstance().testLogin(email, password);
                     if (usuario != null) {
+                        editorShared.putString("nombre", usuario.nombre);
+                        editorShared.putString("apellido", usuario.apellido);
+                        editorShared.putString("nombreUsuario", usuario.nombreUsuario);
+                        editorShared.putBoolean("logueado", true);
+                        editorShared.apply();
                         DBLocal.getInstance().usuarioApp = usuario;
                         Toast.makeText(LoginActivity.this, "¡Inicio de sesión exitoso!",
                                 Toast.LENGTH_LONG).show();
                         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        intent.putExtra("nombre",usuario.nombre);
-                        intent.putExtra("apellido",usuario.apellido);
-                        intent.putExtra("nombreUsuario",usuario.nombreUsuario);
                         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(intent);
                     }

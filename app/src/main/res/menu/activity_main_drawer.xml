@@ -27,4 +27,13 @@
         </menu>
     </item>
 
+    <item android:title="">
+        <menu>
+            <item
+                android:id="@+id/nav_close"
+                android:icon="@drawable/ic_close"
+                android:title="Cerrar sesion" />
+        </menu>
+    </item>
+
 </menu>
