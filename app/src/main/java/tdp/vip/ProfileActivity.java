@@ -4,7 +4,12 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Handler;
+import android.provider.MediaStore;
+import android.provider.OpenableColumns;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,6 +25,7 @@ import com.google.firebase.database.DatabaseReference;
 
 import org.w3c.dom.Text;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import tdp.vip.dblocal.DBLocal;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -32,8 +38,12 @@ public class ProfileActivity extends AppCompatActivity {
     String nombreUsr;
     String mail;
     String fechaNacimiento;
+    String imgURL;
 
     DatabaseReference mDatabase;
+    private static final int PICK_IMAGE = 100;
+    Uri imageUri;
+    private String listFiles = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +61,7 @@ public class ProfileActivity extends AppCompatActivity {
         nombreUsr = sharedPref.getString("nombreUsuario", null);
         mail = sharedPref.getString("mail", null);
         fechaNacimiento = sharedPref.getString("fechaNacimiento", null);
+        imgURL = sharedPref.getString("url", null);
 
         setContentView(R.layout.activity_profile);
 
@@ -66,6 +77,23 @@ public class ProfileActivity extends AppCompatActivity {
         etMail.setText(mail);
         etFechaNacimiento.setText(fechaNacimiento);
 
+        /*
+        if(imgURL != null){
+            imageUri = Uri.parse(imgURL);
+            CircleImageView imageView = (CircleImageView) findViewById(R.id.profile_imgPerfil);
+            imageView.setImageURI(imageUri);
+        }*/
+
+        //Load picture button
+        CircleImageView buttonLoadImage = (CircleImageView) findViewById(R.id.profile_imgPerfil);
+        buttonLoadImage.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                openGallery();
+            }
+        });
+
         Button button= (Button) findViewById(R.id.profile_btnGuardar);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +101,11 @@ public class ProfileActivity extends AppCompatActivity {
                 saveChanges(v);
             }
         });
+    }
+
+    private void openGallery() {
+        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(gallery, PICK_IMAGE);
     }
 
     private void saveChanges(View v) {
@@ -91,6 +124,7 @@ public class ProfileActivity extends AppCompatActivity {
         editorShared.putString("apellido", apellido);
         editorShared.putString("mail", mail);
         editorShared.putString("fechaNacimiento", fechaNacimiento);
+        editorShared.putString("url", String.valueOf(imageUri));
         editorShared.apply();
 
         modificarDatosEnBDD(nombreUsr, nombre, apellido, mail, fechaNacimiento);
@@ -124,5 +158,40 @@ public class ProfileActivity extends AppCompatActivity {
 
         Handler pdCanceller = new Handler();
         pdCanceller.postDelayed(progressRunnable, 4000);
+    }
+
+    public String getFileName(Uri uri) {
+        String result = null;
+        if (uri.getScheme().equals("content")) {
+            Cursor cursor = getContentResolver().query(uri, null, null, null, null);
+            try {
+                if (cursor != null && cursor.moveToFirst()) {
+                    result = cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME));
+                }
+            } finally {
+                cursor.close();
+            }
+        }
+        if (result == null) {
+            result = uri.getPath();
+            int cut = result.lastIndexOf('/');
+            if (cut != -1) {
+                result = result.substring(cut + 1);
+            }
+        }
+        return result;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE && resultCode == RESULT_OK && null != data) {
+            imageUri = data.getData();
+
+            CircleImageView imageView = (CircleImageView) findViewById(R.id.profile_imgPerfil);
+            imageView.setImageURI(imageUri);
+
+        }
     }
 }

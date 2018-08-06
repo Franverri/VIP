@@ -49,6 +49,7 @@ public class MainActivity extends AppCompatActivity
         String nombre = sharedPref.getString("nombre", null);
         String apellido = sharedPref.getString("apellido", null);
         String nombreUsr = sharedPref.getString("nombreUsuario", null);
+        String imgUrl = sharedPref.getString("url",null);
 
 
 
@@ -81,6 +82,10 @@ public class MainActivity extends AppCompatActivity
         navUsername.setText(nombreUsr);
 
         ImageView navImage = (ImageView) headerView.findViewById(R.id.imageView);
+        /*
+        if(imgUrl != null){
+            navImage.setImageURI(Uri.parse(imgUrl));
+        }*/
         navImage.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 goProfile();
