@@ -22,6 +22,7 @@ import android.view.MenuItem;
 import android.support.v4.app.Fragment;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -78,6 +79,13 @@ public class MainActivity extends AppCompatActivity
         navName.setText(nombre + " " + apellido);
         TextView navUsername = (TextView) headerView.findViewById(R.id.nav_header_user);
         navUsername.setText(nombreUsr);
+
+        ImageView navImage = (ImageView) headerView.findViewById(R.id.imageView);
+        navImage.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                goProfile();
+            }
+        });
 
         navigationView.setNavigationItemSelectedListener(this);
 
@@ -202,6 +210,11 @@ public class MainActivity extends AppCompatActivity
         Fragment myFragment = new FragmentTV();
         getSupportFragmentManager().beginTransaction().replace(R.id.content_main,myFragment).commit();
         getSupportActionBar().setTitle("TV/Cine");
+    }
+
+    public void goProfile(){
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
     }
 
 }

@@ -25,6 +25,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -38,7 +39,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import tdp.vip.dblocal.DBLocal;
@@ -77,9 +83,13 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     SharedPreferences sharedPref;
     SharedPreferences.Editor editorShared;
 
+    DatabaseReference mDatabase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        cargarBaseDeDatosFirebase();
 
         //Shared Pref
         sharedPref = getSharedPreferences(getString(R.string.saved_data), Context.MODE_PRIVATE);
@@ -126,6 +136,21 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+    }
+
+    private void cargarBaseDeDatosFirebase() {
+
+        mDatabase = FirebaseDatabase.getInstance().getReference("usuarios");
+        String id = mDatabase.push().getKey();
+        Usuario usuario = new Usuario("franco", "Franco", "Etcheverri", "franco@example.com", "1/1/1990", "1234");
+        mDatabase.child(id).setValue(usuario.toString());
+
+        /*FirebaseDatabase.getInstance()
+                .getReferenceFromUrl("https://vipproject-ffaba.firebaseio.com/")
+                .push()
+                .setValue("Franco");
+        Log.d("PRUEBA", String.valueOf(FirebaseDatabase.getInstance().getReferenceFromUrl("https://vipproject-ffaba.firebaseio.com/usuarios/apellido")));
+    */
     }
 
     private void populateAutoComplete() {
@@ -230,6 +255,27 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         editorShared.putString("nombre", usuario.nombre);
                         editorShared.putString("apellido", usuario.apellido);
                         editorShared.putString("nombreUsuario", usuario.nombreUsuario);
+                        editorShared.putString("mail", usuario.email);
+
+                        //Parseo fecha
+                        Date date = usuario.fechaNacimiento; // your date
+                        Calendar cal = Calendar.getInstance();
+                        cal.setTime(date);
+                        int year = cal.get(Calendar.YEAR);
+                        int month = cal.get(Calendar.MONTH);
+                        month = month + 1;
+                        String strMonth;
+                        if(month > 9){
+                            strMonth = String.valueOf(month);
+                        } else {
+                            strMonth = "0" + month;
+                        }
+
+                        int day = cal.get(Calendar.DAY_OF_MONTH);
+
+                        String strFechaNacimiento = day + "/" + strMonth + "/" + year;
+
+                        editorShared.putString("fechaNacimiento", strFechaNacimiento);
                         editorShared.putBoolean("logueado", true);
                         editorShared.apply();
                         DBLocal.getInstance().usuarioApp = usuario;

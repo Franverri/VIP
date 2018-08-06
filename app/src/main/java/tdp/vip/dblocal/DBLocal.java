@@ -3,6 +3,8 @@ package tdp.vip.dblocal;
 import android.graphics.Bitmap;
 
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Vector;
 
@@ -222,7 +224,26 @@ public class DBLocal {
         publicaciones.add(saludoPersonalizadoMessi);
     }
 
+    public void updateUsuario(String nombreUsr, String nombre, String apellido, String mail, String fechaNacimiento){
+
+        for( Usuario usr : usuarios ) {
+                if(usr.nombreUsuario.equals(nombreUsr)) {
+                    usr.nombre = nombre;
+                    usr.apellido = apellido;
+                    usr.email = mail;
+                    Date date = null;
+                    try {
+                        date = new SimpleDateFormat("dd/MM/yyyy").parse(fechaNacimiento);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    usr.fechaNacimiento = date;
+                }
+        }
+    }
+
     private void initUsuarios() {
+
         Usuario usr1 = new Usuario("franco", "Franco", "Etcheverri", "franco@example.com", "1/1/1990", "1234");
         Usuario usr2 = new Usuario("francisco", "Francisco", "Marin", "francisco@example.com", "1/1/1990", "1234");
         Usuario usr3 = new Usuario("agustin", "Agustin", "Luques", "agustin@example.com", "1/1/1990", "1234");
@@ -242,5 +263,6 @@ public class DBLocal {
         usuarios.add(usr7);
         usuarios.add(usr8);
         usuarios.add(usr9);
+        
     }
 }
