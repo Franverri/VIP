@@ -207,10 +207,14 @@ public class DBLocal {
         Publicacion remera = new Publicacion("Remera de la selección autografiada por Messi",
                 "Oferta imperdible, remera de la selección Argentina firmada por Lionel Messi",
                 Util.resStringToURI("drawable","p_messi_remera"), 5, 1000000, 1);
+
         Publicacion cd = new Publicacion("Cd My World autografiado por Justin Bieber",
                 "Album del músico Justin Bieber \" My World \" autografiado por el mismo",
                 Util.resStringToURI("drawable","p_justin_cd"), 5, 400000, 7);
 
+        Publicacion rmgago = new Publicacion("Remera del Real Madrid autografiada",
+                "Remera del Real Madrid utilizada por Fernando Gago en el año",
+                Util.resStringToURI("drawable","p_rmgago"), 5, 5000000, 6);
 
         //Saludo personalizado de todos
         Publicacion saludoPersonalizado1 = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
@@ -288,6 +292,7 @@ public class DBLocal {
 
         publicaciones.add(remera);
         publicaciones.add(cd);
+        publicaciones.add(rmgago);
     }
 
     public void updateUsuario(String nombreUsr, String nombre, String apellido, String mail, String fechaNacimiento){
