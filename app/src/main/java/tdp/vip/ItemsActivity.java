@@ -1,10 +1,13 @@
 package tdp.vip;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -25,6 +28,9 @@ public class ItemsActivity extends AppCompatActivity {
     private String nombreFamoso;
     private CircleImageView imgFamoso;
 
+    SharedPreferences sharedPref;
+    SharedPreferences.Editor editorShared;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +38,10 @@ public class ItemsActivity extends AppCompatActivity {
         //Le quito la barra de notificaciones
         getWindow().requestFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        //Shared Pref
+        sharedPref = getSharedPreferences(getString(R.string.saved_data), Context.MODE_PRIVATE);
+        editorShared = sharedPref.edit();
 
         setContentView(R.layout.activity_items);
 
@@ -59,15 +69,26 @@ public class ItemsActivity extends AppCompatActivity {
         tvNombreFamoso.setText(nombreFamoso);
 
         agregarPublicaciones(idFamoso);
+
+        String strNombreFamoso = famoso.nombreYApellido;
+        Boolean seguido = sharedPref.getBoolean(strNombreFamoso,false);
+        if(seguido){
+            btnFollow.setText("Seguido");
+            btnFollow.setBackgroundDrawable(getResources().getDrawable(R.drawable.roundedbuttongreen));
+        }
     }
 
     public void followFamous(View view) {
         if(btnFollow.getText().equals("Seguir")){
             btnFollow.setText("Seguido");
             btnFollow.setBackgroundDrawable(getResources().getDrawable(R.drawable.roundedbuttongreen));
+            editorShared.putBoolean(famoso.nombreYApellido, true);
+            editorShared.apply();
         } else {
             btnFollow.setText("Seguir");
             btnFollow.setBackgroundDrawable(getResources().getDrawable(R.drawable.roundedbutton));
+            editorShared.putBoolean(famoso.nombreYApellido, false);
+            editorShared.apply();
         }
     }
 
