@@ -148,7 +148,7 @@ public class DBLocal {
         Famoso maradona = new Famoso( Util.resStringToURI("drawable","f_maradona"), "Diego Maradona", null);
         Famoso kun = new Famoso( Util.resStringToURI("drawable","f_kun"), "Kun Aguero", null);
         Famoso bianchi = new Famoso( Util.resStringToURI("drawable","f_bianchi"), "Carlos Bianchi", null);
-        Famoso palermo = new Famoso( Util.resStringToURI("drawable","f_palermo"), "Martin Palermo", null);
+        Famoso gago = new Famoso( Util.resStringToURI("drawable","f_gago"), "Fernando Gago", "Pintita");
 
 
         Famoso justin = new Famoso( Util.resStringToURI("drawable","f_justin"), "Justin Bieber", null);
@@ -170,7 +170,7 @@ public class DBLocal {
         addFamosoFutbol(ronaldo);
         addFamosoFutbol(bianchi);
         addFamosoFutbol(kun);
-        addFamosoFutbol(palermo);
+        addFamosoFutbol(gago);
 
         addFamosoMusica(justin);
         addFamosoMusica(lali);
@@ -206,22 +206,88 @@ public class DBLocal {
         // Las ids de los famosos matchean con el orden que se llamo new Famoso
         Publicacion remera = new Publicacion("Remera de la selección autografiada por Messi",
                 "Oferta imperdible, remera de la selección Argentina firmada por Lionel Messi",
-                Util.resStringToURI("drawable","p_messi_remera"), 5, 501532, 1);
+                Util.resStringToURI("drawable","p_messi_remera"), 5, 1000000, 1);
         Publicacion cd = new Publicacion("Cd My World autografiado por Justin Bieber",
                 "Album del músico Justin Bieber \" My World \" autografiado por el mismo",
-                Util.resStringToURI("drawable","p_justin_cd"), 5, 180001, 7);
+                Util.resStringToURI("drawable","p_justin_cd"), 5, 400000, 7);
 
-        Publicacion saludoPersonalizadoBianchi = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
-                Util.resStringToURI("drawable", "p_video_personalizado"), 5, 500, 5);
 
-        Publicacion saludoPersonalizadoMessi = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
-                Util.resStringToURI("drawable", "p_video_personalizado"), 5, 500, 1);
+        //Saludo personalizado de todos
+        Publicacion saludoPersonalizado1 = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
+                Util.resStringToURI("drawable", "p_video_personalizado"), 5, 50000, 1);
 
+        Publicacion saludoPersonalizado2 = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
+                Util.resStringToURI("drawable", "p_video_personalizado"), 5, 50000, 2);
+
+        Publicacion saludoPersonalizado3 = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
+                Util.resStringToURI("drawable", "p_video_personalizado"), 5, 50000, 3);
+
+        Publicacion saludoPersonalizado4 = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
+                Util.resStringToURI("drawable", "p_video_personalizado"), 5, 50000, 4);
+
+        Publicacion saludoPersonalizado5 = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
+                Util.resStringToURI("drawable", "p_video_personalizado"), 5, 50000, 5);
+
+        Publicacion saludoPersonalizado6 = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
+                Util.resStringToURI("drawable", "p_video_personalizado"), 5, 50000, 6);
+
+        Publicacion saludoPersonalizado7 = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
+                Util.resStringToURI("drawable", "p_video_personalizado"), 5, 50000, 7);
+
+        Publicacion saludoPersonalizado8 = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
+                Util.resStringToURI("drawable", "p_video_personalizado"), 5, 50000, 8);
+
+        Publicacion saludoPersonalizado9 = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
+                Util.resStringToURI("drawable", "p_video_personalizado"), 5, 50000, 9);
+
+        Publicacion saludoPersonalizado10 = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
+                Util.resStringToURI("drawable", "p_video_personalizado"), 5, 50000, 10);
+
+        Publicacion saludoPersonalizado11 = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
+                Util.resStringToURI("drawable", "p_video_personalizado"), 5, 50000, 11);
+
+        Publicacion saludoPersonalizado12 = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
+                Util.resStringToURI("drawable", "p_video_personalizado"), 5, 50000, 12);
+
+        Publicacion saludoPersonalizado13 = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
+                Util.resStringToURI("drawable", "p_video_personalizado"), 5, 50000, 13);
+
+        Publicacion saludoPersonalizado14 = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
+                Util.resStringToURI("drawable", "p_video_personalizado"), 5, 50000, 14);
+
+        Publicacion saludoPersonalizado15 = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
+                Util.resStringToURI("drawable", "p_video_personalizado"), 5, 50000, 15);
+
+        Publicacion saludoPersonalizado16 = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
+                Util.resStringToURI("drawable", "p_video_personalizado"), 5, 50000, 16);
+
+        Publicacion saludoPersonalizado17 = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
+                Util.resStringToURI("drawable", "p_video_personalizado"), 5, 50000, 17);
+
+        Publicacion saludoPersonalizado18 = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
+                Util.resStringToURI("drawable", "p_video_personalizado"), 5, 50000, 18);
+
+        publicaciones.add(saludoPersonalizado1);
+        publicaciones.add(saludoPersonalizado2);
+        publicaciones.add(saludoPersonalizado3);
+        publicaciones.add(saludoPersonalizado4);
+        publicaciones.add(saludoPersonalizado5);
+        publicaciones.add(saludoPersonalizado6);
+        publicaciones.add(saludoPersonalizado7);
+        publicaciones.add(saludoPersonalizado8);
+        publicaciones.add(saludoPersonalizado9);
+        publicaciones.add(saludoPersonalizado10);
+        publicaciones.add(saludoPersonalizado11);
+        publicaciones.add(saludoPersonalizado12);
+        publicaciones.add(saludoPersonalizado13);
+        publicaciones.add(saludoPersonalizado14);
+        publicaciones.add(saludoPersonalizado15);
+        publicaciones.add(saludoPersonalizado16);
+        publicaciones.add(saludoPersonalizado17);
+        publicaciones.add(saludoPersonalizado18);
 
         publicaciones.add(remera);
         publicaciones.add(cd);
-        publicaciones.add(saludoPersonalizadoBianchi);
-        publicaciones.add(saludoPersonalizadoMessi);
     }
 
     public void updateUsuario(String nombreUsr, String nombre, String apellido, String mail, String fechaNacimiento){

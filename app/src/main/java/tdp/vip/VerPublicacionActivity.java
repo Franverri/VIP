@@ -1,15 +1,19 @@
 package tdp.vip;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Handler;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Activity que muestra una publicacion
@@ -42,6 +46,7 @@ public class VerPublicacionActivity extends AppCompatActivity {
     }
 
     public void goPaymentActivity(View view) {
+
         TextView tvPrecio = (TextView) findViewById(R.id.ver_public_precio);
         String precio = tvPrecio.getText().toString();
 

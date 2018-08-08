@@ -16,17 +16,6 @@ import android.widget.TextView;
 import tdp.vip.dblocal.DBLocal;
 import tdp.vip.dblocal.Publicacion;
 
-
-/**
- * Fragmento que muestra en la UI una foto de publicacion con titulo y precio, y se puede clickear
- *
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link FragmentPublicacion.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link FragmentPublicacion#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class FragmentPublicacion extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "idpublicacion";
@@ -66,7 +55,7 @@ public class FragmentPublicacion extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_fragment_publicacion, container, false);
         // Cargamos la info
-        Publicacion publicacion = DBLocal.getInstance().getPublicacion(idPublicacion);
+        final Publicacion publicacion = DBLocal.getInstance().getPublicacion(idPublicacion);
         TextView titulo = view.findViewById(R.id.public_titulo);
         titulo.setText(publicacion.titulo);
         TextView precio = view.findViewById(R.id.public_precio);
@@ -79,15 +68,34 @@ public class FragmentPublicacion extends Fragment {
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), VerPublicacionActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putInt(ARG_PARAM1, idPublicacion);
-                intent.putExtras(bundle); //Put your id to your next Intent
-                startActivity(intent);
+                //Intent intent = new Intent(getActivity(), VerPublicacionActivity.class);
+                //Bundle bundle = new Bundle();
+                //bundle.putInt(ARG_PARAM1, idPublicacion);
+                if(publicacion.titulo.equals("Saludo personalizado")){
+                    openDialog(idPublicacion);
+                } else {
+                    goPublicacion();
+                }
+                //intent.putExtras(bundle); //Put your id to your next Intent
+                //startActivity(intent);
             }
         });
 
         return view;
     }
+
+    private void goPublicacion() {
+        Intent intent = new Intent(getActivity(), VerPublicacionActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putInt(ARG_PARAM1, idPublicacion);
+        intent.putExtras(bundle); //Put your id to your next Intent
+        startActivity(intent);
+    }
+
+    private void openDialog(int idPublicacion) {
+        ExampleDialog exampleDialog = new ExampleDialog(idPublicacion);
+        exampleDialog.show(getFragmentManager(), "example dialog");
+    }
+
 
 }

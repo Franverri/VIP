@@ -1,11 +1,13 @@
 package tdp.vip;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.support.v7.app.AppCompatActivity;
@@ -49,47 +51,29 @@ public class contact_form extends AppCompatActivity {
         Button email = (Button) findViewById(R.id.post_message);
         email.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
 
-                String name      = your_name.getText().toString();
-                String email     = your_email.getText().toString();
-                String subject   = your_subject.getText().toString();
-                String message   = your_message.getText().toString();
-                if (TextUtils.isEmpty(name)){
-                    your_name.setError("Ingrese su nombre");
-                    your_name.requestFocus();
-                    return;
-                }
+                final ProgressDialog progressDialog = new ProgressDialog(contact_form.this);
+                progressDialog.setTitle("Publicacion");
+                progressDialog.setMessage("Enviando mail...");
+                progressDialog.show();
 
-                Boolean onError = false;
-                if (!isValidEmail(email)) {
-                    onError = true;
-                    your_email.setError("Mail invalido");
-                    return;
-                }
+                Runnable progressRunnable = new Runnable() {
 
-                if (TextUtils.isEmpty(subject)){
-                    your_subject.setError("Ingrese el asunto");
-                    your_subject.requestFocus();
-                    return;
-                }
+                    @Override
+                    public void run() {
+                        progressDialog.cancel();
+                        Toast.makeText(contact_form.this, "Mail enviado!",
+                                Toast.LENGTH_LONG).show();
+                        Intent intent = new Intent(contact_form.this, MainActivity.class);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                    }
+                };
 
-                if (TextUtils.isEmpty(message)){
-                    your_message.setError("Ingrese su mensaje");
-                    your_message.requestFocus();
-                    return;
-                }
+                Handler pdCanceller = new Handler();
+                pdCanceller.postDelayed(progressRunnable, 4000);
 
-                Intent sendEmail = new Intent(android.content.Intent.ACTION_SEND);
-
-                /* Fill it with Data */
-                sendEmail.setType("plain/text");
-                sendEmail.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"publicaciones@vip.com.ar"});
-                sendEmail.putExtra(android.content.Intent.EXTRA_SUBJECT, subject);
-                sendEmail.putExtra(android.content.Intent.EXTRA_TEXT, message);
-
-                /* Send it off to the Activity-Chooser */
-                startActivity(Intent.createChooser(sendEmail, "Enviar mail..."));
             }
         });
 
