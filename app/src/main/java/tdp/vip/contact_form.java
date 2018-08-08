@@ -2,6 +2,7 @@ package tdp.vip;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
@@ -10,12 +11,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.provider.OpenableColumns;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -165,5 +168,32 @@ public class contact_form extends AppCompatActivity {
             Toast.makeText(contact_form.this, "Imagen cargada",
                     Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void onCheckboxClicked(View view) {
+
+        final CheckBox checkBox = (CheckBox) findViewById(R.id.checkbox_precio);
+        if(checkBox.isChecked()){
+            AlertDialog.Builder builder = new AlertDialog.Builder(contact_form.this);
+            builder.setMessage("Si desea recibir asistencia profesional para la determinación del precio del producto se le adicionara un 3% de comision")
+                    .setTitle("Atencion")
+                    .setCancelable(false)
+                    .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            checkBox.setChecked(false);
+                        }
+                    })
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            checkBox.setChecked(true);
+                        }
+                    });
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        }
+
+
     }
 }

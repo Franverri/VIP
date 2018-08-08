@@ -213,8 +213,8 @@ public class DBLocal {
                 Util.resStringToURI("drawable","p_justin_cd"), 5, 400000, 7);
 
         Publicacion rmgago = new Publicacion("Remera del Real Madrid autografiada",
-                "Remera del Real Madrid utilizada por Fernando Gago en el año",
-                Util.resStringToURI("drawable","p_rmgago"), 5, 5000000, 6);
+                "Remera del Real Madrid utilizada por Fernando Gago en la temporada 2006/2007 en la cual se consagraron campeones de La Liga Española. Incluye el logo de Mejor Club del Siglo XX",
+                Util.resStringToURI("drawable","p_rmgago"), 5, 3000000, 6);
 
         //Saludo personalizado de todos
         Publicacion saludoPersonalizado1 = new Publicacion("Saludo personalizado", "Video personalizado para la persona indicada",
